@@ -23,7 +23,6 @@ function App() {
           backdropFilter: "blur(10px)",
         }}
       >
-        <h1 style={{ marginBottom: "20px" }}>D3彩虹渐变背景演示</h1>
         <ColorModuleDemo />
       </div>
     </div>

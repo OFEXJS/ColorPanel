@@ -148,31 +148,6 @@ const ColorConverter: React.FC<ColorConverterProps> = ({ onColorChange }) => {
         ))}
       </div>
 
-      {parsedColor && (
-        <div className="converter-info">
-          <div className="info-row">
-            <span className="info-label">颜色预览:</span>
-            <div className="color-samples">
-              <div
-                className="color-sample"
-                style={{ backgroundColor: parsedColor.hex }}
-                title={parsedColor.hex}
-              />
-              <div
-                className="color-sample"
-                style={{ backgroundColor: parsedColor.rgb }}
-                title={parsedColor.rgb}
-              />
-              <div
-                className="color-sample"
-                style={{ backgroundColor: parsedColor.hsl }}
-                title={parsedColor.hsl}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
       {copiedFormat && (
         <div className="copy-notification">
           已复制 {copiedFormat.toUpperCase()} 值到剪贴板
