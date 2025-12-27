@@ -1,0 +1,291 @@
+.color-panel {
+  position: relative;
+  display: inline-block;
+}
+
+.color-swatch-trigger {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.color-swatch-trigger:hover:not(.disabled) {
+  transform: scale(1.05);
+  border-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-swatch-trigger.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.color-swatch-trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* 颜色面板弹窗 */
+.color-panel-dropdown {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  background-color: var(--bg-color-secondary, #ffffff);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border-color, #e1e4e8);
+  min-width: 320px;
+  max-width: 480px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.color-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color, #e1e4e8);
+}
+
+.color-panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color, #333333);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color-secondary, #666666);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.close-btn:hover {
+  background-color: var(--bg-color-hover, #f0f0f0);
+  color: var(--text-color, #333333);
+}
+
+.color-panel-content {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.color-picker-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color, #e1e4e8);
+}
+
+.color-picker-section .color-picker {
+  box-shadow: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* 预设颜色部分 */
+.preset-colors-section {
+  padding: 16px 20px;
+}
+
+/* 手风琴样式 */
+.accordion-item {
+  border: 1px solid var(--border-color, #e1e4e8);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-color-primary, #f8f9fa);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color, #333333);
+  transition: all 0.2s ease;
+}
+
+.accordion-header:hover {
+  background: var(--bg-color-hover, #e9ecef);
+}
+
+.accordion-arrow {
+  transition: transform 0.2s ease;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666666);
+}
+
+.accordion-arrow.open {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  background: var(--bg-color-secondary, #ffffff);
+  border-top: 1px solid var(--border-color, #e1e4e8);
+  animation: accordionOpen 0.2s ease-out;
+}
+
+@keyframes accordionOpen {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
+
+/* 颜色网格 */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(28px, 1fr));
+  gap: 6px;
+  padding: 12px;
+}
+
+.color-grid-item {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-grid-item:hover {
+  transform: scale(1.1);
+  border-color: var(--border-color, #e1e4e8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-grid-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  border-radius: 3px;
+}
+
+.color-grid-item:hover::after {
+  opacity: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .color-panel-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 90vw;
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+
+  .color-panel-content {
+    max-height: 60vh;
+  }
+
+  .color-grid {
+    grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+    gap: 8px;
+  }
+
+  .color-grid-item {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .color-panel-dropdown {
+    background-color: var(--bg-color-secondary-dark, #2d2d2d);
+    border-color: var(--border-color-dark, #404040);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .color-panel-header {
+    border-bottom-color: var(--border-color-dark, #404040);
+  }
+
+  .close-btn:hover {
+    background-color: var(--bg-color-hover-dark, #404040);
+  }
+
+  .accordion-item {
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .accordion-header {
+    background: var(--bg-color-primary-dark, #1a1a1a);
+    color: var(--text-color-dark, #ffffff);
+  }
+
+  .accordion-header:hover {
+    background: var(--bg-color-hover-dark, #404040);
+  }
+
+  .accordion-content {
+    background: var(--bg-color-secondary-dark, #2d2d2d);
+    border-top-color: var(--border-color-dark, #404040);
+  }
+
+  .color-picker-section {
+    border-bottom-color: var(--border-color-dark, #404040);
+  }
+
+  .color-input-group label, .color-sliders h4 {
+    color: var(--text-color-dark, #ffffff);
+  }
+
+  .color-panel-header h3 {
+    color: var(--text-color-dark, #ffffff);
+  }
+}

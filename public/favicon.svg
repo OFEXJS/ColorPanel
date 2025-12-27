@@ -1,0 +1,64 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="60" cy="60" r="60" fill="#1E2235"/>
+
+  <defs>
+    <!-- 环渐变 -->
+    <linearGradient id="gradientRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="25%" stop-color="#FFD166"/>
+      <stop offset="50%" stop-color="#4ECDC4"/>
+      <stop offset="75%" stop-color="#6C63FF"/>
+      <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+
+    <!-- 中心渐变 -->
+    <linearGradient id="gradientCenter" x1="40" y1="40" x2="80" y2="80">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="50%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#6C63FF"/>
+    </linearGradient>
+
+    <!-- C形掩码（开口向右） -->
+    <mask id="cMask">
+      <rect width="120" height="120" fill="white"/>
+      <path d="M20 60 A40 40 0 1 1 100 60 A40 40 0 1 1 20 60 Z" fill="black"/>
+    </mask>
+
+    <!-- 发光滤镜 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- C形渐变环 -->
+  <circle cx="60" cy="60" r="40" stroke="url(#gradientRing)" stroke-width="12" mask="url(#cMask)"/>
+
+  <!-- 中心圆 -->
+  <circle cx="60" cy="60" r="18" fill="url(#gradientCenter)"/>
+
+  <!-- 八个完美对称的小点 + 轻微发光 -->
+  <g filter="url(#glow)">
+    <!-- 0° (正上方) -->
+    <circle cx="60" cy="20" r="4" fill="#FF6B6B"/>
+    <!-- 45° -->
+    <circle cx="88.28" cy="31.72" r="4" fill="#FFD166"/>
+    <!-- 90° (正右) -->
+    <circle cx="100" cy="60" r="4" fill="#4ECDC4"/>
+    <!-- 135° -->
+    <circle cx="88.28" cy="88.28" r="4" fill="#6C63FF"/>
+    <!-- 180° (正下方) -->
+    <circle cx="60" cy="100" r="4" fill="#FF6B6B"/>
+    <!-- 225° -->
+    <circle cx="31.72" cy="88.28" r="4" fill="#FFD166"/>
+    <!-- 270° (正左) -->
+    <circle cx="20" cy="60" r="4" fill="#4ECDC4"/>
+    <!-- 315° -->
+    <circle cx="31.72" cy="31.72" r="4" fill="#6C63FF"/>
+  </g>
+
+</svg>

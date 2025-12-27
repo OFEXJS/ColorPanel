@@ -1,0 +1,307 @@
+.color-module-demo {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+}
+
+.demo-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.demo-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.demo-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.demo-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.demo-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--text-color, #333333);
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 12px;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 颜色面板演示 */
+.panel-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.panel-demo h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--text-color, #333333);
+}
+
+.color-panel-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: var(--bg-color-primary, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e4e8);
+}
+
+.color-display {
+  text-align: center;
+}
+
+.selected-color-box {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  border: 3px solid var(--border-color, #e1e4e8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 16px;
+  transition: all 0.3s ease;
+}
+
+.selected-color-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.color-code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color, #333333);
+  background: var(--bg-color-primary, #f8f9fa);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #e1e4e8);
+  display: inline-block;
+}
+
+/* 转换器演示 */
+.converter-demo {
+  background: var(--bg-color-secondary, #ffffff);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e4e8);
+  overflow: hidden;
+}
+
+/* 自定义输入演示 */
+.input-demo {
+  background: var(--bg-color-secondary, #ffffff);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e4e8);
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 颜色选择器演示 */
+.picker-demo {
+  background: var(--bg-color-secondary, #ffffff);
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e1e4e8);
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* 功能特性网格 */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--bg-color-primary, #f8f9fa);
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid var(--border-color, #e1e4e8);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+}
+
+.feature-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-color, #333333);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-card li {
+  padding: 6px 0;
+  color: var(--text-color-secondary, #666666);
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.feature-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 968px) {
+  .color-module-demo {
+    padding: 30px 15px;
+  }
+
+  .demo-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .demo-section {
+    padding: 30px 20px;
+  }
+
+  .panel-demo {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .demo-header h1 {
+    font-size: 2rem;
+  }
+
+  .demo-header p {
+    font-size: 1rem;
+  }
+
+  .demo-section {
+    padding: 20px 15px;
+  }
+
+  .demo-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .selected-color-box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .demo-section {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .demo-section h2 {
+    color: var(--text-color-dark, #ffffff);
+    border-bottom-color: #007bff;
+  }
+
+  .panel-demo h3 {
+    color: var(--text-color-dark, #ffffff);
+  }
+
+  .color-panel-wrapper {
+    background: var(--bg-color-primary-dark, #1a1a1a);
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .color-code {
+    background: var(--bg-color-primary-dark, #1a1a1a);
+    border-color: var(--border-color-dark, #404040);
+    color: var(--text-color-dark, #ffffff);
+  }
+
+  .converter-demo {
+    background: var(--bg-color-secondary-dark, #2d2d2d);
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .input-demo {
+    background: var(--bg-color-secondary-dark, #2d2d2d);
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .picker-demo {
+    background: var(--bg-color-secondary-dark, #2d2d2d);
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .feature-card {
+    background: var(--bg-color-primary-dark, #1a1a1a);
+    border-color: var(--border-color-dark, #404040);
+  }
+
+  .feature-card:hover {
+    border-color: #007bff;
+  }
+
+  .feature-card h4 {
+    color: var(--text-color-dark, #ffffff);
+  }
+
+  .feature-card li {
+    color: var(--text-color-secondary-dark, #b0b0b0);
+  }
+}
