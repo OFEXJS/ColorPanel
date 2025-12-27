@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext } from "react";
+import type { ReactNode } from "react";
 
 // 定义颜色上下文的类型
 interface ColorContextType {
@@ -16,9 +17,9 @@ interface ColorProviderProps {
 }
 
 // 颜色上下文提供者组件
-export const ColorProvider: React.FC<ColorProviderProps> = ({ 
-  children, 
-  initialColor = '#007bff' 
+export const ColorProvider: React.FC<ColorProviderProps> = ({
+  children,
+  initialColor = "#007bff",
 }) => {
   const [selectedColor, setSelectedColor] = useState<string>(initialColor);
 
@@ -33,7 +34,7 @@ export const ColorProvider: React.FC<ColorProviderProps> = ({
 export const useColor = () => {
   const context = useContext(ColorContext);
   if (context === undefined) {
-    throw new Error('useColor must be used within a ColorProvider');
+    throw new Error("useColor must be used within a ColorProvider");
   }
   return context;
 };

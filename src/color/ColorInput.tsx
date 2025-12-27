@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import {
   rgbToHex,
   hexToRgb,
@@ -15,7 +15,7 @@ import {
   type HSB,
   type CMYK,
 } from "./colorConverter";
-import { copyToClipboard, getColorName } from "./colorUtils";
+import { copyToClipboard } from "./colorUtils";
 import { useColor } from "./ColorContext";
 import "./ColorInput.css";
 
@@ -26,15 +26,19 @@ interface ColorInputProps {
 const ColorInput: React.FC<ColorInputProps> = ({ onColorChange }) => {
   // 使用颜色上下文
   const { selectedColor, setSelectedColor } = useColor();
-  
+
   const [hex, setHex] = useState(selectedColor || "#007bff");
-  const [rgb, setRgb] = useState<RGB>(hexToRgb(selectedColor || "#007bff") || { r: 0, g: 123, b: 255 });
+  const [rgb, setRgb] = useState<RGB>(
+    hexToRgb(selectedColor || "#007bff") || { r: 0, g: 123, b: 255 }
+  );
   const [rgba, setRgba] = useState<RGBA>({ ...rgb, a: 1 });
   const [hsl, setHsl] = useState<HSL>(rgbToHsl(rgb));
   const [hsb, setHsb] = useState<HSB>(rgbToHsb(rgb));
   const [cmyk, setCmyk] = useState<CMYK>(rgbToCmyk(rgb));
   const [copyMessage, setCopyMessage] = useState<string>("");
-  const [copyTimeout, setCopyTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [copyTimeout, setCopyTimeout] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
 
   // 同步所有颜色格式
   const syncAllFormats = (
@@ -82,7 +86,7 @@ const ColorInput: React.FC<ColorInputProps> = ({ onColorChange }) => {
     if (onColorChange) {
       onColorChange(newHex);
     }
-    
+
     // 更新全局颜色
     setSelectedColor(newHex);
   };
