@@ -69,9 +69,9 @@ const ColorPanel: React.FC<ColorPanelProps> = ({
       y: e.clientY - position.top,
     };
 
-    // 添加全局事件监听
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    // 添加全局事件监听并使用passive选项提高滚动性能
+    document.addEventListener("mousemove", handleMouseMove, { passive: true });
+    document.addEventListener("mouseup", handleMouseUp, { passive: true });
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -100,6 +100,7 @@ const ColorPanel: React.FC<ColorPanelProps> = ({
   // 清理拖拽事件监听器
   useEffect(() => {
     return () => {
+      // 移除事件监听器时不需要传递passive选项
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };

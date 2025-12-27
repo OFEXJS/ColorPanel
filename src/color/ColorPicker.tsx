@@ -266,6 +266,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   // 监听全局鼠标事件
   useEffect(() => {
     if (isDragging) {
+      // 使用passive选项提高滚动性能
       const handleGlobalMouseMove = (e: MouseEvent) => {
         if (!colorPickerRef.current) return;
 
@@ -284,8 +285,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
         setIsDragging(false);
       };
 
-      window.addEventListener("mousemove", handleGlobalMouseMove);
-      window.addEventListener("mouseup", handleGlobalMouseUp);
+      // 添加passive选项以提高滚动性能
+      window.addEventListener("mousemove", handleGlobalMouseMove, { passive: true });
+      window.addEventListener("mouseup", handleGlobalMouseUp, { passive: true });
 
       return () => {
         window.removeEventListener("mousemove", handleGlobalMouseMove);
